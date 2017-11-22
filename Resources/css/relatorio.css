@@ -1,0 +1,14 @@
+﻿body {
+}
+
+table {
+    width: 690px;
+}
+
+    table tr {
+        padding: 50px;
+    }
+
+        table tr td {
+            padding: 10px;
+        }
