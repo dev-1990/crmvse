@@ -172,6 +172,16 @@
                 reverse: true
             });
 
+            $("#txt25Titulo").attr('maxlength', '13');
+            $('#txt25Titulo').mask('0.000.000.000,00', {
+                reverse: true
+            });
+
+            $("#txt75Titulo").attr('maxlength', '13');
+            $('#txt75Titulo').mask('0.000.000.000,00', {
+                reverse: true
+            });
+
             $("#txtRecValor").attr('maxlength', '13');
             $('#txtRecValor').mask('0.000.000.000,00', {
                 reverse: true
@@ -193,6 +203,12 @@
             });
         });
     </script>
+
+    <style>
+        input[type=text] {
+            text-align: right;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -201,9 +217,9 @@
             <asp:Label ID="Label1" runat="server" Text="Valor Título:"></asp:Label>
             <asp:TextBox ID="txtValorTitulo" ClientIDMode="Static" runat="server" AutoPostBack="True" OnTextChanged="txtValorTitulo_TextChanged"></asp:TextBox>
             <asp:Label ID="Label2" runat="server" Text="25% Título:"></asp:Label>
-            <asp:TextBox ID="txt25Titulo" runat="server" Enabled="False"></asp:TextBox>
+            <asp:TextBox ID="txt25Titulo" ClientIDMode="Static" runat="server" Enabled="False"></asp:TextBox>
             <asp:Label ID="Label3" runat="server" Text="75% Título:"></asp:Label>
-            <asp:TextBox ID="txt75Titulo" runat="server" Enabled="False"></asp:TextBox>
+            <asp:TextBox ID="txt75Titulo" ClientIDMode="Static" runat="server" Enabled="False"></asp:TextBox>
             <br />
             <br />
             <br />
