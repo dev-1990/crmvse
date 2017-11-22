@@ -165,6 +165,10 @@
     </script>
 
 
+    
+</head>
+<body>
+
     <script>
         $(document).ready(function () {
             $("#txtValorTitulo").attr('maxlength', '13');
@@ -193,8 +197,6 @@
             });
         });
     </script>
-</head>
-<body>
     <form id="form1" runat="server">
         <div>
 
