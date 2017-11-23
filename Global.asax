@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="webCalcCRMV.Global" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="webCalcularRecebimentoCRMV.Global" Language="C#" %>

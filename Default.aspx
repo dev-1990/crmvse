@@ -1,10 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="webCalcCRMV.Default" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="webCalcularRecebimentoCRMV.Default" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Calculo Retorno</title>
+    <title></title>
     <meta charset="UTF-8" />
 
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport' />
@@ -91,171 +91,88 @@
     <script src="<%=ResolveClientUrl("Resources/script/jquery.mask.js")%>"></script>
     <script src="<%=ResolveClientUrl("Resources/script/toastr.js")%>"></script>
 
-    <script>
-        toastr.options = {
-            "closeButton": false,
-            "debug": false,
-            "newestOnTop": false,
-            "progressBar": false,
-            "positionClass": "toast-top-alternative",
-            "preventDuplicates": false,
-            "onclick": null,
-            "showDuration": "300",
-            "hideDuration": "1000",
-            "timeOut": "5000",
-            "extendedTimeOut": "1000",
-            "showEasing": "swing",
-            "hideEasing": "linear",
-            "showMethod": "fadeIn",
-            "hideMethod": "fadeOut"
-        }
-
-    </script>
-
-    <style>
-        .center-navbar {
-            display: block;
-            text-align: center;
-            color: #3c8dbc;
-            padding: 15px;
-            /* adjust based on your layout */
-            margin-left: 50px;
-        }
-
-
-        table thead tr th {
-            background-color: #b1e4f5;
-        }
-
-        thead th:nth-of-type(odd) {
-            background: #8dd9f2;
-        }
-    </style>
-
-    <style>
-        #loading {
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            position: fixed;
-            display: block;
-            opacity: 0.7;
-            background-color: #fff;
-            z-index: 99;
-            text-align: center;
-        }
-
-        #loading-image {
-            display: block;
-            margin: 0 auto;
-            margin-top: 10%;
-            z-index: 100;
-        }
-    </style>
-
-    <script>
-        function showLoading() {
-            $('#loading').show();
-        }
-
-        function hideLoading() {
-            $('#loading').hide();
-        }
-    </script>
-
-
-    <script>
-        $(document).ready(function () {
-            $("#txtValorTitulo").attr('maxlength', '13');
-            $('#txtValorTitulo').mask('0.000.000.000,00', {
-                reverse: true
-            });
-
-            $("#txt25Titulo").attr('maxlength', '13');
-            $('#txt25Titulo').mask('0.000.000.000,00', {
-                reverse: true
-            });
-
-            $("#txt75Titulo").attr('maxlength', '13');
-            $('#txt75Titulo').mask('0.000.000.000,00', {
-                reverse: true
-            });
-
-            $("#txtRecValor").attr('maxlength', '13');
-            $('#txtRecValor').mask('0.000.000.000,00', {
-                reverse: true
-            });
-
-            $("#txtRecMulta").attr('maxlength', '13');
-            $('#txtRecMulta').mask('0.000.000.000,00', {
-                reverse: true
-            });
-
-            $("#txtRecJuros").attr('maxlength', '13');
-            $('#txtRecJuros').mask('0.000.000.000,00', {
-                reverse: true
-            });
-
-            $("#txtRecCorrecao").attr('maxlength', '13');
-            $('#txtRecCorrecao').mask('0.000.000.000,00', {
-                reverse: true
-            });
-        });
-    </script>
-
-    <style>
-        input[type=text] {
-            text-align: right;
-        }
-    </style>
 </head>
-<body>
+<body class="skin-blue sidebar-mini">
+
+
     <div class="wrapper">
-        <form id="form1" runat="server">
-            <br />
-            <br />
-            <div class="row">
-                <div class="col-md-12">
-                    <asp:Label ID="Label1" runat="server" Text="Valor Título:"></asp:Label>
-                    <asp:TextBox ID="txtValorTitulo" ClientIDMode="Static" runat="server" AutoPostBack="True" OnTextChanged="txtValorTitulo_TextChanged"></asp:TextBox>
-                    <asp:Label ID="Label2" runat="server" Text="25% Título:"></asp:Label>
-                    <asp:TextBox ID="txt25Titulo" ClientIDMode="Static" runat="server" Enabled="False"></asp:TextBox>
-                    <asp:Label ID="Label3" runat="server" Text="75% Título:"></asp:Label>
-                    <asp:TextBox ID="txt75Titulo" ClientIDMode="Static" runat="server" Enabled="False"></asp:TextBox>
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <asp:Panel ID="pnl" runat="server">
-                        <asp:Label ID="Label8" runat="server" Text="Valor"></asp:Label>
-                        <asp:TextBox ID="txtRecValor" ClientIDMode="Static" runat="server"></asp:TextBox>
-                        <asp:Label ID="Label4" runat="server" Text="Multa"></asp:Label>
-                        <asp:TextBox ID="txtRecMulta" ClientIDMode="Static" runat="server"></asp:TextBox>
-                        <asp:Label ID="Label5" runat="server" Text="Juros"></asp:Label>
-                        <asp:TextBox ID="txtRecJuros" ClientIDMode="Static" runat="server"></asp:TextBox>
-                        <asp:Label ID="Label6" runat="server" Text="Correção"></asp:Label>
-                        <asp:TextBox ID="txtRecCorrecao" ClientIDMode="Static" runat="server"></asp:TextBox>
-                        <asp:Button ID="btnRecebimentoSalvar" runat="server" Text="Salvar" OnClick="btnRecebimentoSalvar_Click" />
-                    </asp:Panel>
 
-                    <br />
-                    <br />
+        <header class="main-header">
 
-                    <asp:GridView ID="grdRecebimento" runat="server" OnRowDataBound="grdRecebimento_RowDataBound"></asp:GridView>
-
-                    <br />
-
-                    <asp:GridView ID="grdTotal" runat="server" OnRowDataBound="grdTotal_RowDataBound"></asp:GridView>
-
-                    <br />
-
-                    <asp:Button ID="btnCalcular" runat="server" Text="Calcular" OnClick="btnCalcular_Click" />
-                    <asp:Button ID="btnLimpar" runat="server" Text="Limpar" OnClick="btnLimpar_Click" />
-
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+                <div class="center-navbar">
                 </div>
-            </div>
-        </form>
+            </nav>
+        </header>
+        <aside class="main-sidebar">
+            <section class="sidebar" style="min-height: 1400px">
+                <ul class="sidebar-menu">
+                    <asp:Literal runat="server" ID="menuUsuario"></asp:Literal>
+                    <li></li>
+                </ul>
+            </section>
+        </aside>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <form id="form1" runat="server">
+                <div class="box-body">
+                    <div class="box box-default">
+                        <div class="box-header with-border">Pesquisa</div>
+                        <div class="box-body">
+                            <div class="form-group">
+                                <div>
+
+                                    <asp:Label ID="Label1" runat="server" Text="Valor Título:"></asp:Label>
+                                    <asp:TextBox ID="txtValorTitulo" runat="server" AutoPostBack="True" OnTextChanged="txtValorTitulo_TextChanged"></asp:TextBox>
+                                    <asp:Label ID="Label2" runat="server" Text="25% Título:"></asp:Label>
+                                    <asp:TextBox ID="txt25Titulo" runat="server" Enabled="False"></asp:TextBox>
+                                    <asp:Label ID="Label3" runat="server" Text="75% Título:"></asp:Label>
+                                    <asp:TextBox ID="txt75Titulo" runat="server" Enabled="False"></asp:TextBox>
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <asp:Panel ID="pnl" runat="server">
+                                        <asp:Label ID="Label7" runat="server" Text="Descrição"></asp:Label>
+                                        <asp:TextBox ID="txtRecDescricao" runat="server"></asp:TextBox>
+                                        <asp:Label ID="Label8" runat="server" Text="Valor"></asp:Label>
+                                        <asp:TextBox ID="txtRecValor" runat="server"></asp:TextBox>
+                                        <asp:Label ID="Label4" runat="server" Text="Multa"></asp:Label>
+                                        <asp:TextBox ID="txtRecMulta" runat="server"></asp:TextBox>
+                                        <asp:Label ID="Label5" runat="server" Text="Juros"></asp:Label>
+                                        <asp:TextBox ID="txtRecJuros" runat="server"></asp:TextBox>
+                                        <asp:Label ID="Label6" runat="server" Text="Correção"></asp:Label>
+                                        <asp:TextBox ID="txtRecCorrecao" runat="server"></asp:TextBox>
+                                        <asp:Button ID="btnRecebimentoSalvar" runat="server" Text="Salvar" OnClick="btnRecebimentoSalvar_Click" />
+                                    </asp:Panel>
+
+                                    <br />
+                                    <br />
+
+                                    <asp:GridView ID="grdRecebimento" CssClass="table table-bordered table-hover table-striped" runat="server" OnRowDataBound="grdRecebimento_RowDataBound"></asp:GridView>
+
+                                    <br />
+
+                                    <asp:GridView ID="grdTotal" CssClass="table table-bordered table-hover table-striped" runat="server" OnRowDataBound="grdTotal_RowDataBound"></asp:GridView>
+
+                                    <br />
+
+                                    <asp:Button ID="btnCalcular" runat="server" Text="Calcular" OnClick="btnCalcular_Click" />
+                                    <asp:Button ID="btnLimpar" runat="server" Text="Limpar" OnClick="btnLimpar_Click" />
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 </body>
 </html>
