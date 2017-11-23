@@ -92,7 +92,7 @@
     <script src="<%=ResolveClientUrl("Resources/script/toastr.js")%>"></script>
 
 </head>
-<body class="skin-blue sidebar-mini">
+<body class="skin-blue sidebar-mini sidebar-collapse">
 
 
     <div class="wrapper">
@@ -123,7 +123,7 @@
             <form id="form1" runat="server">
                 <div class="box-body">
                     <div class="box box-default">
-                        <div class="box-header with-border">Pesquisa</div>
+                        <div class="box-header with-border"></div>
                         <div class="box-body">
                             <div class="form-group">
                                 <div>
