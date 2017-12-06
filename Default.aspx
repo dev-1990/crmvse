@@ -91,6 +91,51 @@
     <script src="<%=ResolveClientUrl("Resources/script/jquery.mask.js")%>"></script>
     <script src="<%=ResolveClientUrl("Resources/script/toastr.js")%>"></script>
 
+
+    <script>
+        $(document).ready(function () {
+            $("#txtValorTitulo").attr('maxlength', '13');
+            $('#txtValorTitulo').mask('0.000.000.000,00', {
+                reverse: true
+            });
+
+            $("#txt25Titulo").attr('maxlength', '13');
+            $('#txt25Titulo').mask('0.000.000.000,00', {
+                reverse: true
+            });
+
+            $("#txt75Titulo").attr('maxlength', '13');
+            $('#txt75Titulo').mask('0.000.000.000,00', {
+                reverse: true
+            });
+
+            $("#txtRecValor").attr('maxlength', '13');
+            $('#txtRecValor').mask('0.000.000.000,00', {
+                reverse: true
+            });
+
+            $("#txtRecMulta").attr('maxlength', '13');
+            $('#txtRecMulta').mask('0.000.000.000,00', {
+                reverse: true
+            });
+
+            $("#txtRecJuros").attr('maxlength', '13');
+            $('#txtRecJuros').mask('0.000.000.000,00', {
+                reverse: true
+            });
+
+            $("#txtRecCorrecao").attr('maxlength', '13');
+            $('#txtRecCorrecao').mask('0.000.000.000,00', {
+                reverse: true
+            });
+        });
+    </script>
+
+    <style>
+        input[type=text] {
+            text-align: right;
+        }
+    </style>
 </head>
 <body class="skin-blue sidebar-mini sidebar-collapse">
 
@@ -174,5 +219,6 @@
                 </div>
             </form>
         </div>
+    </div>
 </body>
 </html>
